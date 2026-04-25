@@ -1,1 +1,1 @@
-https://bikedashboard-ekalidyar.streamlit.app/
+https://bikedashboard-ekalidya.streamlit.app/
