@@ -25,9 +25,9 @@ pip install streamlit pandas seaborn altair matplotlib
 # Masuk ke direktori dashboard
 cd dashboard
 # Menjalankan aplikasi
-streamlit run dashboard.py
+streamlit run dashboard.py / streamlit run dashboard/dashboard.py
 
 
 
 Local URL: http://localhost:8501
-Network URL: http://192.168.1.8:8501
+Network URL: http://192.168.1.5:8501
