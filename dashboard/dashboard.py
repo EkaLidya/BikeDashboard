@@ -13,22 +13,28 @@ st.set_page_config(
 # --- LOAD DATA ---
 @st.cache_data
 def load_data():
+    # Mengambil direktori tempat file dashboard.py berada
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    main_path = os.path.join(base_dir, "main_data.csv")
-    hour_path = os.path.join(base_dir, "hour.csv")
     
-    # Load data utama
+    # Path untuk data utama
+    main_path = os.path.join(base_dir, "main_data.csv")
+    
+    # Path untuk data jam (Cek di folder yang sama dulu, baru cek folder data)
+    hour_path = os.path.join(base_dir, "hour.csv")
+    if not os.path.exists(hour_path):
+        hour_path = os.path.join(base_dir, "..", "data", "hour.csv")
+    
+    # Proses Loading
     df = pd.read_csv(main_path)
     df['dteday'] = pd.to_datetime(df['dteday'])
     
-    # Load data jam jika ada
     hour_df = None
     if os.path.exists(hour_path):
         hour_df = pd.read_csv(hour_path)
         hour_df['dteday'] = pd.to_datetime(hour_df['dteday'])
         
     return df, hour_df
-
+# PENTING: Panggil fungsi ini agar variabel df dan hour_df tersedia
 df, hour_df = load_data()
 
 # --- SIDEBAR FILTER (Definisikan Variabel di Sini) ---
